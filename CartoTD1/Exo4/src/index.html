@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Touch Events</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .info {
+      margin: 20px;
+    }
+    #canvas {
+      border: 1px solid #000;
+      width: 100%;
+      height: 500px;
+      touch-action: none; /* Empêche le navigateur de gérer les gestes */
+    }
+  </style>
+</head>
+<body>
+<h1>Test des événements tactiles</h1>
+<div class="info">
+  <p><strong>Type d'événement :</strong> <span id="eventType"></span></p>
+  <p><strong>Position X :</strong> <span id="posX"></span></p>
+  <p><strong>Position Y :</strong> <span id="posY"></span></p>
+</div>
+<canvas id="canvas"></canvas>
+<script src="script.js"></script>
+</body>
+</html>
