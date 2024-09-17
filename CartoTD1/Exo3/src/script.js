@@ -1,14 +1,28 @@
 // Vérification si le navigateur supporte DeviceOrientation et DeviceMotion
-if (window.DeviceOrientationEvent) {
-    window.addEventListener('deviceorientation', handleOrientation);
+if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+    // Demande d'autorisation pour DeviceOrientation
+    DeviceOrientationEvent.requestPermission().then(permissionState => {
+        if (permissionState === 'granted') {
+            window.addEventListener('deviceorientation', handleOrientation);
+        } else {
+            alert("Permission pour l'orientation refusée.");
+        }
+    }).catch(console.error);
 } else {
-    alert("L'API DeviceOrientation n'est pas supportée par ce navigateur.");
+    window.addEventListener('deviceorientation', handleOrientation);
 }
 
-if (window.DeviceMotionEvent) {
-    window.addEventListener('devicemotion', handleMotion);
+if (typeof DeviceMotionEvent.requestPermission === 'function') {
+    // Demande d'autorisation pour DeviceMotion
+    DeviceMotionEvent.requestPermission().then(permissionState => {
+        if (permissionState === 'granted') {
+            window.addEventListener('devicemotion', handleMotion);
+        } else {
+            alert("Permission pour le mouvement refusée.");
+        }
+    }).catch(console.error);
 } else {
-    alert("L'API DeviceMotion n'est pas supportée par ce navigateur.");
+    window.addEventListener('devicemotion', handleMotion);
 }
 
 function handleOrientation(event) {
