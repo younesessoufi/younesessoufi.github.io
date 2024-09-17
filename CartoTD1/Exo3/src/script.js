@@ -26,9 +26,9 @@ document.getElementById('requestPermissionBtn').addEventListener('click', () => 
 
 function handleOrientation(event) {
     // Orientation du smartphone
-    const alpha = event.alpha; // Rotation autour de l'axe Z
-    const beta = event.beta;   // Inclinaison autour de l'axe X
-    const gamma = event.gamma; // Inclinaison autour de l'axe Y
+    const alpha = event.alpha || 0; // Rotation autour de l'axe Z
+    const beta = event.beta || 0;   // Inclinaison autour de l'axe X
+    const gamma = event.gamma || 0; // Inclinaison autour de l'axe Y
 
     document.getElementById('alpha').innerText = alpha.toFixed(2);
     document.getElementById('beta').innerText = beta.toFixed(2);
