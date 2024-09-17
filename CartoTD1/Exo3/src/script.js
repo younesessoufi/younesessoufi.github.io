@@ -25,6 +25,7 @@ document.getElementById('requestPermissionBtn').addEventListener('click', () => 
 });
 
 function handleOrientation(event) {
+    console.log("Orientation Event Triggered");
     // Orientation du smartphone
     const alpha = event.alpha || 0; // Rotation autour de l'axe Z
     const beta = event.beta || 0;   // Inclinaison autour de l'axe X
@@ -36,6 +37,7 @@ function handleOrientation(event) {
 }
 
 function handleMotion(event) {
+    console.log("Motion Event Triggered");
     // Accélération en translation
     const accelerationX = event.acceleration.x || 0;
     const accelerationY = event.acceleration.y || 0;
