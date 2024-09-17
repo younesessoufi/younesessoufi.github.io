@@ -1,10 +1,5 @@
 
-if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition, showError);
-    navigator.geolocation.watchPosition(showPosition, showError);
-} else {
-    alert("La géolocalisation n'est pas supportée par ce navigateur.");
-}
+
 
 function showPosition(position) {
     const latitude = position.coords.latitude;
