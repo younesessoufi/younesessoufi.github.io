@@ -6,16 +6,25 @@ L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/
     attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
 }).addTo(map);
 
-// URL des données GeoJSON (exemple pris sur un site d'open data)
-var geojsonUrl = 'https://france-geojson.gregoiredavid.fr/repo/departements.geojson';
+// URL des données GeoJSON pour les communes du département 06
+var geojsonUrl = 'https://geo.api.gouv.fr/communes?codeDepartement=06&fields=nom,code,codesPostaux,siren,codeEpci,codeDepartement,codeRegion,population&format=geojson&geometry=centre';
 
 // Requête AJAX pour récupérer les données GeoJSON et les afficher
 fetch(geojsonUrl)
     .then(response => response.json())
     .then(data => {
-        L.geoJSON(data).addTo(map);  // Ajoute les données GeoJSON à la carte
+        // Ajouter les données GeoJSON à la carte
+        L.geoJSON(data, {
+            onEachFeature: function (feature, layer) {
+                // Afficher des informations sur la commune dans un popup
+                layer.bindPopup(
+                    `<strong>${feature.properties.nom}</strong><br>
+                    Code: ${feature.properties.code}<br>
+                    Population: ${feature.properties.population}`
+                );
+            }
+        }).addTo(map);
     })
     .catch(error => {
         console.error('Erreur lors de la récupération des données GeoJSON:', error);
     });
-
