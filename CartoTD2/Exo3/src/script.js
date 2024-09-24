@@ -7,7 +7,7 @@ L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/
 }).addTo(map);
 
 // URL des données GeoJSON (exemple pris sur un site d'open data)
-var geojsonUrl = 'http://opendata.nicecotedazur.org/data/storage/f/2024-09-24T06:04:44.904Z/entries-visites.json';
+var geojsonUrl = 'https://france-geojson.gregoiredavid.fr/repo/departements.geojson';
 
 // Requête AJAX pour récupérer les données GeoJSON et les afficher
 fetch(geojsonUrl)
