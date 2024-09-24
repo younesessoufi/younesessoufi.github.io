@@ -4,14 +4,54 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Orientation et mouvement du smartphone</title>
+  <script>
+    function updateExoOptions() {
+      const td = document.getElementById("tdSelect").value;
+      const exoSelect = document.getElementById("exoSelect");
+
+      // Vider la liste des exercices
+      exoSelect.innerHTML = '';
+
+      // Créer les options d'exercices en fonction du TD sélectionné
+      if (td === "1") {
+        exoSelect.innerHTML += '<option value="2">Exo2</option>';
+        exoSelect.innerHTML += '<option value="3">Exo3</option>';
+        exoSelect.innerHTML += '<option value="4">Exo4</option>';
+      } else if (td === "2") {
+        exoSelect.innerHTML += '<option value="1">Exo1</option>';
+        exoSelect.innerHTML += '<option value="2">Exo2</option>';
+        exoSelect.innerHTML += '<option value="3">Exo3</option>';
+      }
+    }
+
+    function navigate() {
+      const td = document.getElementById("tdSelect").value;
+      const exo = document.getElementById("exoSelect").value;
+      if (td && exo) {
+        window.location.href = `CartoTD${td}/Exo${exo}/src/index.html`;
+      }
+    }
+  </script>
 </head>
 <body>
 
-<ul>
-  <li><a href="CartoTD1/Exo2/src/index.html">Exo2</a></li>
-  <li><a href="CartoTD1/Exo3/src/index.html">Exo3</a></li>
-  <li><a href="CartoTD1/Exo4/src/index.html">Exo4</a></li>
-</ul>
+  <h1>Choisir TD et Exercice</h1>
+
+  <label for="tdSelect">Numéro du TD :</label>
+  <select id="tdSelect" onchange="updateExoOptions()">
+    <option value="">Sélectionner un TD</option>
+    <option value="1">TD1</option>
+    <option value="2">TD2</option>
+    <!-- Ajoute plus d'options pour d'autres TD si nécessaire -->
+  </select>
+
+  <label for="exoSelect">Numéro de l'exercice :</label>
+  <select id="exoSelect">
+    <option value="">Sélectionner un Exercice</option>
+    <!-- Les options d'exercice seront générées dynamiquement -->
+  </select>
+
+  <button onclick="navigate()">Aller à l'exercice</button>
 
 </body>
 </html>
