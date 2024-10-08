@@ -4,6 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Orientation et mouvement du smartphone</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f4f4f4;
+    }
+    label, select, button {
+      display: block;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 10px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
   <script>
     function updateExoOptions() {
       const td = document.getElementById("tdSelect").value;
@@ -21,6 +42,9 @@
         exoSelect.innerHTML += '<option value="1">Exo1</option>';
         exoSelect.innerHTML += '<option value="2">Exo2</option>';
         exoSelect.innerHTML += '<option value="3">Exo3</option>';
+      } else if (td === "3") { // Ajout pour TD3
+        exoSelect.innerHTML += '<option value="1">Exo1</option>';
+        exoSelect.innerHTML += '<option value="2">Exo2</option>';
       }
     }
 
@@ -29,6 +53,8 @@
       const exo = document.getElementById("exoSelect").value;
       if (td && exo) {
         window.location.href = `CartoTD${td}/Exo${exo}/src/index.html`;
+      } else {
+        alert("Veuillez sélectionner un TD et un exercice.");
       }
     }
   </script>
@@ -42,13 +68,12 @@
     <option value="">Sélectionner un TD</option>
     <option value="1">TD1</option>
     <option value="2">TD2</option>
-    <!-- Ajoute plus d'options pour d'autres TD si nécessaire -->
+    <option value="3">TD3</option> <!-- Ajout de TD3 -->
   </select>
 
   <label for="exoSelect">Numéro de l'exercice :</label>
   <select id="exoSelect">
     <option value="">Sélectionner un Exercice</option>
-    <!-- Les options d'exercice seront générées dynamiquement -->
   </select>
 
   <button onclick="navigate()">Aller à l'exercice</button>
